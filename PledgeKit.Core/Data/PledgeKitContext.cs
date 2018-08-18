@@ -63,6 +63,7 @@ namespace PledgeKit.Core.Data
                     .HasMaxLength(100);
 
                 entity.Property(e => e.LastUpdatedOn).HasColumnType("datetime");
+               
             });
 
             modelBuilder.Entity<Event>(entity =>
