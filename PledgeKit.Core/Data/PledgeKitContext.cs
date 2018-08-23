@@ -63,7 +63,8 @@ namespace PledgeKit.Core.Data
                     .HasMaxLength(100);
 
                 entity.Property(e => e.LastUpdatedOn).HasColumnType("datetime");
-               
+                entity.HasQueryFilter(x => !x.Deleted);
+
             });
 
             modelBuilder.Entity<Event>(entity =>
@@ -114,6 +115,8 @@ namespace PledgeKit.Core.Data
                     .HasForeignKey(d => d.EventId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_dbo.EventAttendees_dbo.Events_EventId");
+
+                entity.HasQueryFilter(x => !x.InActive);
             });
 
             modelBuilder.Entity<EventProject>(entity =>
@@ -137,6 +140,7 @@ namespace PledgeKit.Core.Data
                     .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_dbo.EventProjects_dbo.Projects_ProjectId");
+
             });
 
             modelBuilder.Entity<Payment>(entity =>
@@ -175,6 +179,8 @@ namespace PledgeKit.Core.Data
                     .HasForeignKey(d => d.PaymentMethodId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_dbo.Payments_dbo.PaymentMethods_PaymentMethodId");
+
+                entity.HasQueryFilter(x => !x.Deleted);
             });
 
             modelBuilder.Entity<Pledge>(entity =>
@@ -207,6 +213,8 @@ namespace PledgeKit.Core.Data
                     .WithMany(p => p.Pledges)
                     .HasForeignKey(d => d.ProjectId)
                     .HasConstraintName("FK_dbo.Pledges_dbo.Projects_ProjectId");
+
+                entity.HasQueryFilter(x => !x.Deleted);
             });
 
             modelBuilder.Entity<Project>(entity =>
@@ -228,6 +236,7 @@ namespace PledgeKit.Core.Data
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(300);
+                entity.HasQueryFilter(x => !x.Deleted);
             });
 
             OnModelCreatingPartial(modelBuilder);

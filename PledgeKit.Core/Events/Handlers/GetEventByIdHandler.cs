@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using AzureFromTheTrenches.Commanding.Abstractions;
-using Mapster;
 using Microsoft.EntityFrameworkCore;
 using PledgeKit.Core.Data;
 using PledgeKit.Core.Events.Commands;
@@ -22,9 +21,8 @@ namespace PledgeKit.Core.Events.Handlers
         {
             return await _context.Events
                 .Where(x=>x.EventId == query.Id)
-                .ProjectToType<EventModel>()
+                .BuildEventModel()
                 .FirstOrDefaultAsync();
-
         }
     }
 }

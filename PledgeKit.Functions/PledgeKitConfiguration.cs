@@ -9,6 +9,7 @@ using PledgeKit.Core.Data;
 using PledgeKit.Core.Events;
 using PledgeKit.Core.Events.Commands;
 using PledgeKit.Core.Events.Handlers;
+using FunctionMonkey.FluentValidation;
 
 namespace PledgeKit.Functions
 {
@@ -26,9 +27,11 @@ namespace PledgeKit.Functions
                             options.UseSqlServer(Environment.GetEnvironmentVariable("PledgeKitDb",
                                                      EnvironmentVariableTarget.Process) ?? throw new InvalidOperationException())
                                 .UseInternalServiceProvider(serviceProvider);
+
                         });
 
                 })
+                .AddFluentValidation()
                 .OpenApiEndpoint(openApi => openApi
                     .Title("A Simple API")
                     .Version("0.0.0")
