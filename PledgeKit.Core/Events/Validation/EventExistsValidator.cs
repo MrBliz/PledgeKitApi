@@ -16,17 +16,16 @@ namespace PledgeKit.Core.Events.Validation
 
         public async Task<ValidateEventResult> ValidateEvent(CreateEditEventCommandBase model)
         {
-            var result = new ValidateEventResult();
+            var result = new ValidateEventResult
             {
+                EventExists = await
+                    _context.Events
+                        .AnyAsync(
+                            x =>
+                                x.EventDate.Date == model.EventDate.Date &&
+                                x.Name.ToLower() == model.Name.ToLower())
+            };
 
-            }
-
-            result.EventExists = await
-                _context.Events
-                    .AnyAsync(
-                        x =>
-                           x.EventDate.Date == model.EventDate.Date &&
-                            x.Name.ToLower() == model.Name.ToLower());
 
             if (result.EventExists)
             {
@@ -36,16 +35,5 @@ namespace PledgeKit.Core.Events.Validation
 
             return result;
         }
-
-        public class ValidateEventResult
-        {
-            public bool EventExists { get; set; }
-            public string Message { get; set; }
-        }
-    }
-
-    public interface IEventExistsValidator
-    {
-        Task<EventExistsValidator.ValidateEventResult> ValidateEvent(CreateEditEventCommandBase model);
     }
 }

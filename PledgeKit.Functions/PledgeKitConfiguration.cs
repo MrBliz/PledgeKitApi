@@ -1,12 +1,7 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using FunctionMonkey.Abstractions;
 using FunctionMonkey.Abstractions.Builders;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using PledgeKit.Core.Attendees.Commands;
-using PledgeKit.Core.Data;
-using PledgeKit.Core.Events;
 using PledgeKit.Core.Events.Commands;
 using PledgeKit.Core.Events.Handlers;
 using FunctionMonkey.FluentValidation;
@@ -16,20 +11,13 @@ namespace PledgeKit.Functions
     public class PledgeKitConfiguration : IFunctionAppConfiguration
     {
         public void Build(IFunctionHostBuilder builder)
-        {          
-            builder                    
+        {
+            builder
                 .Setup((serviceCollection, commandRegistry) =>
                 {
                     commandRegistry.Discover<GetEventByIdHandler>();
-                    serviceCollection.AddEntityFrameworkSqlServer()
-                        .AddDbContext<PledgeKitContext>((serviceProvider, options) =>
-                        {
-                            options.UseSqlServer(Environment.GetEnvironmentVariable("PledgeKitDb",
-                                                     EnvironmentVariableTarget.Process) ?? throw new InvalidOperationException())
-                                .UseInternalServiceProvider(serviceProvider);
 
-                        });
-
+                    serviceCollection.AddServices();
                 })
                 .AddFluentValidation()
                 .OpenApiEndpoint(openApi => openApi

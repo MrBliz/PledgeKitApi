@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PledgeKit.Core", "PledgeKit.Core\PledgeKit.Core.csproj", "{7EBE0454-7395-480C-AB97-16B7195F425C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PledgeKit.Core", "PledgeKit.Core\PledgeKit.Core.csproj", "{7EBE0454-7395-480C-AB97-16B7195F425C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PledgeKit.Functions", "PledgeKit.Functions\PledgeKit.Functions.csproj", "{9720E2CF-D5F7-4675-AF53-384E2473E1E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PledgeKit.Functions", "PledgeKit.Functions\PledgeKit.Functions.csproj", "{9720E2CF-D5F7-4675-AF53-384E2473E1E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PledgeKit.UnitTests", "PledgeKit.UnitTests\PledgeKit.UnitTests.csproj", "{9720F307-36B2-4DAF-A61C-31E4B76E9878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9720E2CF-D5F7-4675-AF53-384E2473E1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9720E2CF-D5F7-4675-AF53-384E2473E1E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9720E2CF-D5F7-4675-AF53-384E2473E1E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9720F307-36B2-4DAF-A61C-31E4B76E9878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9720F307-36B2-4DAF-A61C-31E4B76E9878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9720F307-36B2-4DAF-A61C-31E4B76E9878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9720F307-36B2-4DAF-A61C-31E4B76E9878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
