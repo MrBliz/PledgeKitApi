@@ -7,4 +7,13 @@
     <StartupObject />
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Shouldly" Version="3.0.0" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PledgeKit.Core\PledgeKit.Core.csproj" />
+  </ItemGroup>
+
 </Project>
